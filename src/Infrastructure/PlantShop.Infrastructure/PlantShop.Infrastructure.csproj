@@ -23,4 +23,8 @@
       <None Remove="Data\**" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\Domain\PlantShop.Domain\PlantShop.Domain.csproj" />
+    </ItemGroup>
+
 </Project>
