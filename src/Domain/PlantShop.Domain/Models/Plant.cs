@@ -2,9 +2,16 @@ namespace PlantShop.Domain.Models;
 
 public class Plant
 {
-    public Plant(string name, string image, decimal price, string description, GeneralCategory generalCategory,
+#pragma warning disable CS8618
+    public Plant()
+#pragma warning restore CS8618
+    {
+    }
+
+    public Plant(int id, string name, string image, decimal price, string description, GeneralCategory generalCategory,
         SpecificCategory specificCategory)
     {
+        Id = id;
         Name = name;
         Image = image;
         Price = price;
