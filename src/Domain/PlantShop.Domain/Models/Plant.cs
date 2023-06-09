@@ -2,14 +2,12 @@ namespace PlantShop.Domain.Models;
 
 public class Plant
 {
-#pragma warning disable CS8618
     public Plant()
-#pragma warning restore CS8618
     {
     }
 
     public Plant(int id, string name, string image, decimal price, string description, GeneralCategory generalCategory,
-        SpecificCategory specificCategory)
+        SpecificCategory specificCategory, bool isHotSale)
     {
         Id = id;
         Name = name;
@@ -18,6 +16,7 @@ public class Plant
         Description = description;
         GeneralCategory = generalCategory;
         SpecificCategory = specificCategory;
+        IsHotSale = isHotSale;
     }
 
     public int Id { get; private set; }
@@ -27,4 +26,5 @@ public class Plant
     public string Description { get; private set; }
     public GeneralCategory GeneralCategory { get; private set; }
     public SpecificCategory SpecificCategory { get; private set; }
+    public bool IsHotSale { get; private set; }
 }

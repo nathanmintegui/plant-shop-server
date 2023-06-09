@@ -29,4 +29,17 @@ public class PlantRepository : IPlantRepository
 
         return plants;
     }
+
+    public async Task<IEnumerable<Plant>> GetAllHotSaleAsync(int pageNumber, int pageSize)
+    {
+        // TODO pageable query result 
+        const string command = @"SELECT * 
+                                 FROM plant 
+                                 WHERE is_hot_sale = true";
+
+
+        var hotSalePlants = await _connection.QueryAsync<Plant>(command);
+
+        return hotSalePlants;
+    }
 }
