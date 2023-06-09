@@ -13,7 +13,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IPlantRepository, PlantRepository>();
+builder.Services.AddScoped<IPlanterRepository, PlanterRepository>();
+
 builder.Services.AddScoped<IPlantService, PlantService>();
+builder.Services.AddScoped<IPlanterService, PlanterService>();
 
 var app = builder.Build();
 
