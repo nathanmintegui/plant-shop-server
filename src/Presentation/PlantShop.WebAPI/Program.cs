@@ -14,9 +14,11 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IPlantRepository, PlantRepository>();
 builder.Services.AddScoped<IPlanterRepository, PlanterRepository>();
+builder.Services.AddScoped<ITrendingPlantRepository, TrendingPlantRepository>();
 
 builder.Services.AddScoped<IPlantService, PlantService>();
 builder.Services.AddScoped<IPlanterService, PlanterService>();
+builder.Services.AddScoped<ITrendingPlantService, TrendingPlantService>();
 
 var app = builder.Build();
 
