@@ -19,4 +19,11 @@ public class PlantService : IPlantService
 
         return response;
     }
+
+    public async Task<IEnumerable<Plant>> GetAllHotSaleAsync(int pageNumber, int pageSize)
+    {
+        var response = await _plantRepository.GetAllHotSaleAsync(pageNumber, pageSize);
+
+        return response;
+    }
 }
