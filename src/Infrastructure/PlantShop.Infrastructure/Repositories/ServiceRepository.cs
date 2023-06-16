@@ -20,12 +20,14 @@ public class ServiceRepository : IServiceRepository
         _connection.Open();
     }
 
-    public async Task<IEnumerable<Services>> GetAllAsync(int pageNumber, int pageSize)
+    public async Task<IEnumerable<Services>> GetAllAsync(Pager pager)
     {
-        // TODO pageable query result
-        const string command = @"SELECT * FROM service";
+        const string query = @"SELECT * FROM service
+                               ORDER BY Id
+                               OFFSET       @Offset ROWS
+                               FETCH NEXT   @Next    ROWS ONLY";
 
-        var services = await _connection.QueryAsync<Services>(command);
+        var services = await _connection.QueryAsync<Services>(query, pager);
 
         return services;
     }

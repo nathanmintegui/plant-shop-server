@@ -4,5 +4,5 @@ namespace PlantShop.Domain.Repositories;
 
 public interface IServiceRepository
 {
-    Task<IEnumerable<Services>> GetAllAsync(int pageNumber, int pageSize);
+    Task<IEnumerable<Services>> GetAllAsync(Pager pager);
 }
