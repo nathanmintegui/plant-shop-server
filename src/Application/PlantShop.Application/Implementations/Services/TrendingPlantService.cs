@@ -15,7 +15,9 @@ public class TrendingPlantService : ITrendingPlantService
 
     public async Task<IEnumerable<Plant>> GetAllAsync(int pageNumber, int pageSize)
     {
-        var response = await _trendingPlantRepository.GetAllAsync(pageNumber, pageSize);
+        var pager = new Pager(pageNumber, pageSize);
+
+        var response = await _trendingPlantRepository.GetAllAsync(pager);
 
         return response;
     }

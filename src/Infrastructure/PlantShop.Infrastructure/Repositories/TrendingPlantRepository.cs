@@ -20,12 +20,14 @@ public class TrendingPlantRepository : ITrendingPlantRepository
         _connection.Open();
     }
 
-    public async Task<IEnumerable<Plant>> GetAllAsync(int pageNumber, int pageSize)
+    public async Task<IEnumerable<Plant>> GetAllAsync(Pager pager)
     {
-        // TODO pageable query result
-        const string command = @"SELECT * FROM plant";
+        const string query = @"SELECT * FROM plant
+                               ORDER BY Id
+                               OFFSET      @Offset  ROWS 
+                               FETCH NEXT  @Next    ROWS ONLY";
 
-        var plants = await _connection.QueryAsync<Plant>(command);
+        var plants = await _connection.QueryAsync<Plant>(query, pager);
 
         return plants;
     }
