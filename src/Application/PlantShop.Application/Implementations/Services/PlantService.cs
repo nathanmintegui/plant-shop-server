@@ -22,7 +22,9 @@ public class PlantService : IPlantService
 
     public async Task<IEnumerable<Plant>> GetAllHotSaleAsync(int pageNumber, int pageSize)
     {
-        var response = await _plantRepository.GetAllHotSaleAsync(pageNumber, pageSize);
+        var pager = new Pager(pageNumber, pageSize);
+
+        var response = await _plantRepository.GetAllHotSaleAsync(pager);
 
         return response;
     }
