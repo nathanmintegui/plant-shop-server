@@ -20,12 +20,14 @@ public class PlanterRepository : IPlanterRepository
         _connection.Open();
     }
 
-    public async Task<IEnumerable<Planter>> GetAllAsync(int pageNumber, int pageSize)
+    public async Task<IEnumerable<Planter>> GetAllAsync(Pager pager)
     {
-        // TODO pageable query result
-        const string command = @"SELECT * FROM planter";
+        const string command = @"SELECT * FROM planter
+                                 ORDER BY Id
+                                 OFFSET @Offset ROWS
+                                 FETCH NEXT @Next ROWS ONLY";
 
-        var planters = await _connection.QueryAsync<Planter>(command);
+        var planters = await _connection.QueryAsync<Planter>(command, pager);
 
         return planters;
     }
