@@ -30,15 +30,16 @@ public class PlantRepository : IPlantRepository
         return plants;
     }
 
-    public async Task<IEnumerable<Plant>> GetAllHotSaleAsync(int pageNumber, int pageSize)
+    public async Task<IEnumerable<Plant>> GetAllHotSaleAsync(Pager pager)
     {
-        // TODO pageable query result 
-        const string command = @"SELECT * 
-                                 FROM plant 
-                                 WHERE ishotsale = true";
+        const string command = @"SELECT * FROM plant 
+                                WHERE ishotsale = true
+                                ORDER BY Id
+                                OFFSET @Offset ROWS
+                                FETCH NEXT @Next ROWS ONLY";
 
 
-        var hotSalePlants = await _connection.QueryAsync<Plant>(command);
+        var hotSalePlants = await _connection.QueryAsync<Plant>(command, pager);
 
         return hotSalePlants;
     }
