@@ -35,7 +35,7 @@ public class PlantRepository : IPlantRepository
         // TODO pageable query result 
         const string command = @"SELECT * 
                                  FROM plant 
-                                 WHERE is_hot_sale = true";
+                                 WHERE ishotsale = true";
 
 
         var hotSalePlants = await _connection.QueryAsync<Plant>(command);
