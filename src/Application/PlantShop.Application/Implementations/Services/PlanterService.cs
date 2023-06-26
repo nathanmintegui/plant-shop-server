@@ -15,7 +15,9 @@ public class PlanterService : IPlanterService
 
     public async Task<IEnumerable<Planter>> GetAllAsync(int pageNumber, int pageSize)
     {
-        var response = await _planterRepository.GetAllAsync(pageNumber, pageSize);
+        var pager = new Pager(pageNumber, pageSize);
+
+        var response = await _planterRepository.GetAllAsync(pager);
 
         return response;
     }
