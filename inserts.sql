@@ -35,10 +35,6 @@ create table service (
 
 -- Inserts --
 
-INSERT INTO public.plant
-(id, "name", image, price, description, general_category, specific_category, ishotsale)
-VALUES(0, '', '', 0, '', '', '', false);
-
 INSERT INTO plant (id, "name", image, price, description, general_category, specific_category, ishotsale)
 VALUES(1, 'Philodendron Birkin', 'https://www.leafenvy.co.uk/cdn/shop/products/PhilodendronBirkinSmall.jpg?v=1681210388&width=920', 350, 'Variegated white line markings characterise this easy-going houseplant. ', 'indoor', 'snake_plant', false);
 
