@@ -13,14 +13,12 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="..\..\..\.dockerignore">
-        <Link>.dockerignore</Link>
-      </Content>
+      <ProjectReference Include="..\..\Application\PlantShop.Application\PlantShop.Application.csproj" />
+      <ProjectReference Include="..\..\Infrastructure\PlantShop.Infrastructure\PlantShop.Infrastructure.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Application\PlantShop.Application\PlantShop.Application.csproj" />
-      <ProjectReference Include="..\..\Infrastructure\PlantShop.Infrastructure\PlantShop.Infrastructure.csproj" />
+      <None Remove="Dockerfile" />
     </ItemGroup>
 
 </Project>
