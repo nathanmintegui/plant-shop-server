@@ -9,7 +9,7 @@ services:
     image: docker.io/library/plant-shop
     depends_on:
       - "app_db"
-    container_name: API
+    container_name: app
     ports:
       - "8088:80"
     build:
