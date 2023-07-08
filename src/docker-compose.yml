@@ -5,18 +5,18 @@ networks:
     driver: bridge
 
 services:
-  plantshop-webapi:
-    image: plant-shop-server
+  app:
+    image: docker.io/library/plant-shop
     depends_on:
       - "app_db"
-    container_name: plantshop-services
+    container_name: API
     ports:
       - "8088:80"
     build:
       context: .
       dockerfile: Dockerfile
     environment:
-      - ConnectionStrings__DefaultConnection=User ID=postgres;Password=postgres;Server=app_db;Port=5433;Database=postgres; IntegratedSecurity=true;Pooling=true;
+      - ConnectionStrings__DefaultConnection=User ID=postgres;Password=postgres;Server=app_db;Port=5435;Database=postgres; IntegratedSecurity=true;Pooling=true;
       - ASPNETCORE_URLS=http://+:80
     networks:
       - dev
@@ -29,10 +29,10 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DATABASE=postgres
     ports:
-      - "5433:5432"
+      - "5432:5432"
     restart: always
     volumes:
-      - app_data:/home/nathan/postgresql/data
+      - app_data:/home/nathan/db
     networks:
       - dev
 

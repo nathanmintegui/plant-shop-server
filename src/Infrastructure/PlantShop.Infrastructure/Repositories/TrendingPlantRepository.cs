@@ -1,4 +1,5 @@
 using Dapper;
+using Microsoft.Extensions.Configuration;
 using Npgsql;
 using PlantShop.Domain.Models;
 using PlantShop.Domain.Repositories;
@@ -7,16 +8,13 @@ namespace PlantShop.Infrastructure.Repositories;
 
 public class TrendingPlantRepository : ITrendingPlantRepository
 {
-    private const string ConnectionString = "Host=localhost:5432;" +
-                                            "Username=pshop;" +
-                                            "Password=pshop;" +
-                                            "Database=pshop";
-
     private readonly NpgsqlConnection _connection;
 
-    public TrendingPlantRepository()
+    public TrendingPlantRepository(IConfiguration configuration)
     {
-        _connection = new NpgsqlConnection(ConnectionString);
+        var connectionString = configuration.GetConnectionString("DefaultConnection");
+
+        _connection = new NpgsqlConnection(connectionString);
         _connection.Open();
     }
 
