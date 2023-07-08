@@ -12,7 +12,7 @@ public class TrendingPlantRepository : ITrendingPlantRepository
 
     public TrendingPlantRepository(IConfiguration configuration)
     {
-        var connectionString = configuration.GetConnectionString("DefaultConnection");
+        var connectionString = configuration.GetConnectionString("DatabaseConnection");
 
         _connection = new NpgsqlConnection(connectionString);
         _connection.Open();
